@@ -22,6 +22,7 @@ class Game:
         )  # set the screen size to 300x600 . 20rowsx10columns grid. Each cell is 30x30 pixels
         self.game_over = False
         self.score = 0
+        FREEZE_KEY = pygame.K_f
 
         # game objects
         self.grid = Grid()
@@ -35,6 +36,7 @@ class Game:
         pygame.time.set_timer(event_every_200ms, 200)
 
         while True:
+            FREEZE_KEY = pygame.K_f
             command = None
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -52,7 +54,7 @@ class Game:
                         self.update_score(0, 1)
                     if event.key == pygame.K_UP and self.game_over == False:
                         command = Command.UP
-                    if event.key == pygame.K_FREEZE and self.game_over == False:
+                    if event.key == FREEZE_KEY and not self.game_over:
                         command = Command.FREEZE
                 elif event.type == event_every_200ms and self.game_over == False:
                     command = Command.DOWN
