@@ -6,3 +6,5 @@ class Command(Enum):
     RIGHT = 2
     DOWN = 3
     UP = 4
+    FREEZE = 5
+    BOMB = 6
