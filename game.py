@@ -12,6 +12,7 @@ from tetrominos import (
     JTetromino,
     LTetromino,
 )
+from random import randint
 
 
 class Game:
@@ -42,6 +43,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     exit()
+                randomNum = randint(0, 100000000)
+                if randomNum == 1:
+                    command = Command.FREEZE
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE and self.game_over == True:
                         self.__init__()
@@ -70,6 +74,9 @@ class Game:
 
     def update(self, command):
         self.tetromino.update(command, self)
+        
+    
+    
 
     def spawn_new_tetromino(self):
         return random.choice(
