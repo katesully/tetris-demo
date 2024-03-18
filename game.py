@@ -52,6 +52,8 @@ class Game:
                         self.update_score(0, 1)
                     if event.key == pygame.K_UP and self.game_over == False:
                         command = Command.UP
+                    if event.key == pygame.K_FREEZE and self.game_over == False:
+                        command = Command.FREEZE
                 elif event.type == event_every_200ms and self.game_over == False:
                     command = Command.DOWN
 
