@@ -30,6 +30,7 @@ class Game:
         self.tetromino = self.spawn_new_tetromino()
         self.ui = UI()
         self.next_tetromino = self.spawn_new_tetromino()
+    
 
     def run(self):
 

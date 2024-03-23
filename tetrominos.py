@@ -1,7 +1,6 @@
 import pygame
 from command import Command
 from resources.colors import Colors
-from Tetromino import *
 
 
 class Tetromino:
@@ -9,11 +8,6 @@ class Tetromino:
         self.state = 0
         self.col_offset = 4
         self.row_offset = 0
-        self.tetrominos = []
-        self.tetrominosFactory = TetrominoFactory()
-        for i in range(2):
-            self.tetrominos.append(self.tetrominosFactory.create_tetromino(i))
-        self.freezinglogic = FreezePowerupTetromino()
 
     def draw(self, screen, ui_x_offset, ui_y_offset):
         for row_index, row in enumerate(self.blocks[self.state]):
@@ -39,8 +33,6 @@ class Tetromino:
             self.move_down(game)
         if command == Command.UP:
             self.rotate()
-        if command == Command.FREEZE:
-            self.freezinglogic.freeze()
 
     def move_left(self, game):
         self.col_offset -= 1

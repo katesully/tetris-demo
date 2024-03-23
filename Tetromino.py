@@ -2,37 +2,39 @@ import time
 
 
 class Tetromino:
-    def __init__(self, shape):
-        self.shape = shape
+    def __init__(self):
+        pass
+        
+        
 
 
 class TetrominoFactory:
-    def create_tetromino(self, shape):
+    def create_tetromino(self):
         pass
 
 
 class FreezePowerupTetrominoFactory(TetrominoFactory):
-    def create_tetromino(self, shape, slow_duration):
-        return FreezePowerupTetromino(shape, slow_duration)
+    def create_tetromino(self, slow_duration):
+        return FreezePowerupTetromino(slow_duration)
 
 
 class BombBlockTetrominoFactory(TetrominoFactory):
-    def create_tetromino(self, shape):
-        return BombBlockTetromino(shape)
+    def create_tetromino(self):
+        return BombBlockTetromino()
 
 
 class FreezePowerupTetromino(Tetromino):
-    def __init__(self):
-        # super().__init__(shape)
-        self.slow_duration = 5
+    def __init__(self, slow_duration):
+        super().__init__()
+        self.slow_duration = slow_duration
 
     def freeze(self):
         time.sleep(self.slow_duration)
 
 
 class BombBlockTetromino(Tetromino):
-    def __init__(self, shape, explosion_pattern, explosion_range):
-        super().__init__(shape)
+    def __init__(self, explosion_pattern, explosion_range):
+        super().__init__()
         self.explosion_pattern = explosion_pattern
         self.explosion_range = explosion_range
 
